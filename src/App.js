@@ -52,13 +52,7 @@ function App() {
             .map((post, i) => {
               return (
                 <div key={i}>
-                  <span
-                    id={i}
-                    className="cursor-pointer"
-                    onClick={ClickHandler}
-                  >
-                    {post.title}
-                  </span>
+                  <span id={i}>{post.title}</span>
                   <div>{isFetching ? "Updating..." : ""}</div>
                   <ReactQueryDevtools initialIsOpen />
                 </div>
