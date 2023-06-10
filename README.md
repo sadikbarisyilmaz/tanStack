@@ -1,3 +1,17 @@
+# React Query Exercise
+
+## Overview
+
+This exercise focuses on creating a Next.js application that uses React Query to fetch data.
+
+## Instructions
+
+1. Create a NextJS application (the configurations are up to you, but make sure "App Router" is enabled, since you will need it in this app).
+2. Create a page for fetching all posts using this url: `https://jsonplaceholder.typicode.com/posts`
+3. Once a user clicks on a post, it should take him to another page that fetches a single post details `https://jsonplaceholder.typicode.com/posts/:id`.
+
+**IMPORTANT:** make sure you use React Query for fetching data
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

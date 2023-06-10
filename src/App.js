@@ -1,23 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import axios from "axios";
+import { useState } from "react";
 
 function App() {
+  const [clicked, setClicked] = useState(false);
+  const [postId, setpostId] = useState("");
+  const { isLoading, error, data, isFetching } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () =>
+      axios
+        .get("https://jsonplaceholder.typicode.com/posts")
+        .then((res) => res.data),
+  });
+
+  const ClickHandler = (e) => {
+    setpostId(e.target.id);
+    console.log("clicked");
+    console.log(data);
+    setTimeout(setClicked(true), 400);
+  };
+
+  // console.log(data);
+  if (isLoading) return "Loading...";
+  if (error) return "An error has occurred: " + error.message;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="text-center grid gap-2 p-56">
+      <h1 className="text-4xl mb-10">POSTS</h1>
+      <p className="text-2xl" onClick={() => setClicked(false)}>
+        Go Home
+      </p>
+
+      {!clicked
+        ? data.map((post, i) => {
+            return (
+              <div key={i}>
+                <span id={i} onClick={ClickHandler}>
+                  {post.title}
+                </span>
+                <div>{isFetching ? "Updating..." : ""}</div>
+                <ReactQueryDevtools initialIsOpen />
+              </div>
+            );
+          })
+        : data
+            .filter((post) => post.id == postId)
+            .map((post, i) => {
+              return (
+                <div key={i}>
+                  <span id={i} onClick={ClickHandler}>
+                    {post.title}
+                  </span>
+                  <div>{isFetching ? "Updating..." : ""}</div>
+                  <ReactQueryDevtools initialIsOpen />
+                </div>
+              );
+            })}
     </div>
   );
 }
