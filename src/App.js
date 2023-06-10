@@ -21,13 +21,11 @@ function App() {
   });
 
   const ClickHandler = (e) => {
-    setpostId(e.target.id);
+    setpostId(Number(e.target.id) + 1);
     console.log("clicked");
-    console.log(data);
     setTimeout(setClicked(true), 400);
   };
 
-  // console.log(data);
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
   return (
@@ -50,7 +48,7 @@ function App() {
             );
           })
         : data
-            .filter((post) => post.id == postId)
+            .filter((post) => post.id === postId)
             .map((post, i) => {
               return (
                 <div key={i}>
