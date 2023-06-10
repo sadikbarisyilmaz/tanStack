@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="text-center grid gap-2 p-56">
       <h1 className="text-4xl mb-10">POSTS</h1>
-      <p className="text-2xl" onClick={() => setClicked(false)}>
+      <p className="text-2xl cursor-pointer" onClick={() => setClicked(false)}>
         Go Home
       </p>
 
@@ -39,7 +39,7 @@ function App() {
         ? data.map((post, i) => {
             return (
               <div key={i}>
-                <span id={i} onClick={ClickHandler}>
+                <span id={i} className="cursor-pointer" onClick={ClickHandler}>
                   {post.title}
                 </span>
                 <div>{isFetching ? "Updating..." : ""}</div>
@@ -52,7 +52,11 @@ function App() {
             .map((post, i) => {
               return (
                 <div key={i}>
-                  <span id={i} onClick={ClickHandler}>
+                  <span
+                    id={i}
+                    className="cursor-pointer"
+                    onClick={ClickHandler}
+                  >
                     {post.title}
                   </span>
                   <div>{isFetching ? "Updating..." : ""}</div>
