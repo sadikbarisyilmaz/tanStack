@@ -45,9 +45,9 @@ function App() {
             .map((post, i) => {
               return (
                 <div key={i}>
-                  <h2 id={i}>{post.title}</h2>
+                  <h2 className="mb-2" id={i}><strong>{post.title}</strong></h2>
                   <span id={i}>{post.body}</span>
-                  <div id={i} className="cursor-pointer" onClick={ClickHandler}>
+                  <div id={i} className="cursor-pointer">
                     Post Id: {post.id}
                   </div>
                   <div>{isFetching ? "Updating..." : ""}</div>
