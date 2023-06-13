@@ -45,7 +45,8 @@ function App() {
             .map((post, i) => {
               return (
                 <div key={i}>
-                  <span id={i}>{post.title}</span>
+                  <h2 id={i}>{post.title}</h2>
+                  <span id={i}>{post.body}</span>
                   <div id={i} className="cursor-pointer" onClick={ClickHandler}>
                     Post Id: {post.id}
                   </div>
