@@ -1,5 +1,5 @@
 # React Query Exercise
-
+[Live Link](https://tan-stack-sadikbarisyilmaz.vercel.app/)
 ## Overview
 
 This exercise focuses on creating a Next.js application that uses React Query to fetch data.
